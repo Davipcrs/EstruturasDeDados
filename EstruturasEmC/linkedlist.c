@@ -1,4 +1,4 @@
-#include<C:\Users\davip\Documents\Projetos\ED\C\linkedlist.h>
+#include"linkedlist.h"
 
 
 
@@ -21,8 +21,6 @@ void append(struct node** head_ref, int data){                                  
     
     struct node* last = *head_ref;
 
-
-
     if(*head_ref == NULL){                                                              //caso não exista o 'head' é criado outro.
         *head_ref = new_node;
         return;
@@ -34,17 +32,15 @@ void append(struct node** head_ref, int data){                                  
 
     last->next = new_node;                                                              //adiciona o novo valor como sendo o ultimo valor da lista
     return;
-
     
 }
 
-
-void getLast(struct node* head, struct node* last){
-    struct node* aux = head;
+void getLast(struct node** head, struct node** last){
+    struct node* aux = *head;
     while(aux->next!=NULL){
         aux = aux->next;
     }
-    last = aux;
+    *last = aux;
 }
 
 int getLen(struct node*head){
@@ -59,9 +55,36 @@ int getLen(struct node*head){
     return i;
 }
 
+void pop(struct node** head_ref){
+    struct node* aux = *head_ref;
+    aux = aux->next;   
+    
+    if (*head_ref==NULL){
+        return;
+    }
+    
+    *head_ref = NULL;
+    *head_ref = aux;
+ 
+}
 
 
+void getHalf(struct node** head, struct node** half, int len){
+    struct node* aux = *head;
+    if(aux == NULL){
+        return;
+    }
 
+    int auxLen = len/2;
+    int i = 0;
+
+    for(i; i<auxLen; i++){
+        aux = aux->next;
+    }
+
+    *half = aux;
+
+}
 
 
 int main(){
@@ -75,7 +98,8 @@ int main(){
     //scanf("%d", &auxData);
 
     Head = (struct node*)malloc(sizeof(struct node));
-    Last = Head;
+    Last = (struct node*)malloc(sizeof(struct node));
+    Half = (struct node*)malloc(sizeof(struct node));
     Head->data = auxData;
     Head->next = NULL;
 
@@ -88,7 +112,7 @@ int main(){
     len = getLen(Head);
     printf("%d", len);
     printf("\n");
-    getLast(Head, Last);
+    getLast(&Head, &Last);
     append(&Last, 20);
     printlist(Head);
     printf("\n");
@@ -96,7 +120,34 @@ int main(){
     
     printf("%d", len);
     printf("\n");
+    pop(&Head);
+    printlist(Head);
+    len = getLen(Head);
+    printf("\n");
+    printf("%d", len);
+
+    printf("\n");
+    append(&Head, 10);
+    printlist(Head);
+    getLast(&Head, &Last);
+    len = getLen(Head);
+    getHalf(&Head, &Half, len);
+    printf("  %d", Half->data);
+    printf("  %d", Last->data);
+    append(&Last, 60);
+    getHalf(&Head, &Half, getLen(Head));
+    getLast(&Head, &Last);
+
+    printf("\n");
+    printlist(Head);
+    printf("  %d", Half->data);
+    printf("  %d", Last->data);
+
+
+
     free(Head);
+    free(Half);
+    free(Last);
 
     return 0;
 }
