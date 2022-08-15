@@ -86,26 +86,7 @@ void getHalf(struct node** head, struct node** half, int len){
 
 }
 
-
-int main(){
-    int auxData = 10;
-    struct node* Head = NULL;
-    struct node* Last = NULL;
-    struct node* Half = NULL;
-    int len = 0;
-
-
-    //scanf("%d", &auxData);
-
-    Head = (struct node*)malloc(sizeof(struct node));
-    Last = (struct node*)malloc(sizeof(struct node));
-    Half = (struct node*)malloc(sizeof(struct node));
-    Head->data = auxData;
-    Head->next = NULL;
-
-
-
-
+void testFunc(struct node* Head, struct node* Half, struct node* Last, int data, int len){
     append(&Head, 15);
     printlist(Head);
     printf("\n");
@@ -143,6 +124,26 @@ int main(){
     printf("  %d", Half->data);
     printf("  %d", Last->data);
 
+}
+
+
+int main(){
+    int auxData = 10;
+    struct node* Head = NULL;
+    struct node* Last = NULL;
+    struct node* Half = NULL;
+    int len = 0;
+
+
+    //scanf("%d", &auxData);
+
+    Head = (struct node*)malloc(sizeof(struct node));
+    Last = (struct node*)malloc(sizeof(struct node));
+    Half = (struct node*)malloc(sizeof(struct node));
+    Head->data = auxData;
+    Head->next = NULL;
+
+    testFunc(Head, Half, Last, auxData, len);
 
 
     free(Head);

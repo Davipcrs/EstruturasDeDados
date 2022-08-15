@@ -16,3 +16,4 @@ void getHalf(struct node** head, struct node** half, int len);
 int getLen(struct node* head); //ok
 void getMax(struct node* head, struct node* max);
 void getMin(struct node* head, struct node* min);
+void testFunc(struct node* Head, struct node* Half, struct node* Last, int data, int len);
