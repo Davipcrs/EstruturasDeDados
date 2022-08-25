@@ -12,8 +12,10 @@ void pop(struct node** head_ref); //ok
 void removeNode(struct node* head, int index);
 void start(int data);
 void getLast(struct node** head, struct node** last); //ok
-void getHalf(struct node** head, struct node** half, int len);
+void getHalf(struct node** head, struct node** half, int len); //ok
 int getLen(struct node* head); //ok
-void getMax(struct node* head, struct node* max);
-void getMin(struct node* head, struct node* min);
-void testFunc(struct node* Head, struct node* Half, struct node* Last, int data, int len);
+void getMax(struct node* head, struct node** max); //ok
+void getMin(struct node* head, struct node** min); //ok
+void testFunc(struct node* Head, struct node* Half, struct node* Last, int data, int len, struct node* max, struct node* min); //ok
+
+

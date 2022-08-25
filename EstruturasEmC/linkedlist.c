@@ -86,7 +86,61 @@ void getHalf(struct node** head, struct node** half, int len){
 
 }
 
-void testFunc(struct node* Head, struct node* Half, struct node* Last, int data, int len){
+void getMax(struct node* head, struct node** Nmax){
+    if(head == NULL){
+        printf("List not Initialized!");
+        return;
+    }
+    struct node* auxH = head;
+    struct node* auxMax = auxH;
+    int i;
+    while(auxH!=NULL){
+        if(auxMax->data < auxH->data){
+            auxMax = auxH;
+            auxH = auxH->next;
+        }
+        else{
+            auxH = auxH->next;
+        }
+    }
+    
+    *Nmax = auxMax;
+    
+}
+
+void getMin(struct node* head, struct node** Nmin){
+    if(head == NULL){
+        printf("List not Initialized!");
+        return;
+    }
+    struct node* auxH = head;
+
+    
+    struct node* auxMin = auxH;
+    int i;
+    while(auxH!=NULL){
+        if(auxMin->data > auxH->data){
+            auxMin = auxH;
+            auxH = auxH->next;
+        }
+        else{
+            auxH = auxH->next;
+        }
+    }
+    
+    
+    
+    *Nmin = auxMin;
+    
+
+
+}
+
+
+
+
+
+void testFunc(struct node* Head, struct node* Half, struct node* Last, int data, int len, struct node*max, struct node* min){
     append(&Head, 15);
     printlist(Head);
     printf("\n");
@@ -119,36 +173,49 @@ void testFunc(struct node* Head, struct node* Half, struct node* Last, int data,
     getHalf(&Head, &Half, getLen(Head));
     getLast(&Head, &Last);
 
+
+
+    getMax(Head, &max);
+    getMin(Head, &min);
     printf("\n");
     printlist(Head);
     printf("  %d", Half->data);
     printf("  %d", Last->data);
+    printf("  %d Maior", max->data);
+    printf("  %d Menor", min->data);
 
 }
 
 
 int main(){
     int auxData = 10;
-    struct node* Head = NULL;
-    struct node* Last = NULL;
-    struct node* Half = NULL;
+    struct node* Head   =   NULL;
+    struct node* Last   =   NULL;
+    struct node* Half   =   NULL;
+    struct node* NMax   =   NULL;
+    struct node* NMin   =   NULL;
     int len = 0;
 
 
     //scanf("%d", &auxData);
 
-    Head = (struct node*)malloc(sizeof(struct node));
-    Last = (struct node*)malloc(sizeof(struct node));
-    Half = (struct node*)malloc(sizeof(struct node));
+    Head    =   (struct node*)malloc(sizeof(struct node));
+    Last    =   (struct node*)malloc(sizeof(struct node));
+    Half    =   (struct node*)malloc(sizeof(struct node));
+    NMax    =   (struct node*)malloc(sizeof(struct node));
+    NMin    =   (struct node*)malloc(sizeof(struct node));
+
     Head->data = auxData;
     Head->next = NULL;
 
-    testFunc(Head, Half, Last, auxData, len);
+    testFunc(Head, Half, Last, auxData, len, NMax, NMin);
 
 
     free(Head);
     free(Half);
     free(Last);
+    free(NMax);
+    free(NMin);
 
     return 0;
 }
