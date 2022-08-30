@@ -1,8 +1,5 @@
 #include"linkedlist.h"
 
-
-
-
 void printlist(struct node* head){
     struct node* n = head;
     
@@ -114,8 +111,6 @@ void getMin(struct node* head, struct node** Nmin){
         return;
     }
     struct node* auxH = head;
-
-    
     struct node* auxMin = auxH;
     int i;
     while(auxH!=NULL){
@@ -127,13 +122,18 @@ void getMin(struct node* head, struct node** Nmin){
             auxH = auxH->next;
         }
     }
-    
-    
-    
+   
     *Nmin = auxMin;
+}
+
+void removeNode(struct node* head, int index){
+
+}
+
+void getNode(struct node* head, int index){
     
 
-
+   
 }
 
 

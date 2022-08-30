@@ -10,6 +10,7 @@ void printlist(struct node* head); //ok
 void append(struct node** head, int data); //ok
 void pop(struct node** head_ref); //ok
 void removeNode(struct node* head, int index);
+void getNode(struct node* head, int index);
 void start(int data);
 void getLast(struct node** head, struct node** last); //ok
 void getHalf(struct node** head, struct node** half, int len); //ok
