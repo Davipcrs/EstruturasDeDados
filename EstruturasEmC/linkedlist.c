@@ -127,7 +127,20 @@ void getMin(struct node* head, struct node** Nmin){
 }
 
 void removeNode(struct node* head, int index){
-
+	if(head == NULL){
+		return;	
+	}
+	int i = 0;
+	struct node* aux1 = head;
+	while(i<index){
+		aux1 = aux1->next;
+	}
+	struct node auxPrev = *aux1;
+	struct node deleted = *aux1->next;
+	struct node auxNext = *aux1->next->next;
+	
+	auxPrev->next = auxNext;
+	deleted = NULL;
 }
 
 struct node getNode(struct node* head, int index){
@@ -185,7 +198,7 @@ void testFunc(struct node* Head, struct node* Half, struct node* Last, int data,
     getHalf(&Head, &Half, getLen(Head));
     getLast(&Head, &Last);
 
-
+//    removeNode(Head, 1);
 
     getMax(Head, &max);
     getMin(Head, &min);
