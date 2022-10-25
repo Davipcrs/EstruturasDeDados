@@ -134,10 +134,11 @@ void removeNode(struct node* head, int index){
 	struct node* aux1 = head;
 	while(i<index){
 		aux1 = aux1->next;
+		i = i +1;
 	}
-	struct node auxPrev = *aux1;
-	struct node deleted = *aux1->next;
-	struct node auxNext = *aux1->next->next;
+	struct node *auxPrev = aux1;
+	struct node *deleted = aux1->next;
+	struct node *auxNext = aux1->next->next;
 	
 	auxPrev->next = auxNext;
 	deleted = NULL;
@@ -150,11 +151,12 @@ struct node getNode(struct node* head, int index){
     for(int i = 0; i<index; i++){
         aux = aux->next;
 
-    }
+    
 	aux2 = *aux;
 
 
     return aux2;
+    }
 }
 
 void start(struct node** head, int data){
@@ -199,7 +201,7 @@ void testFunc(struct node* Head, struct node* Half, struct node* Last, int data,
     getHalf(&Head, &Half, getLen(Head));
     getLast(&Head, &Last);
 
-//    removeNode(Head, 1);
+    removeNode(Head, 1);
 
     getMax(Head, &max);
     getMin(Head, &min);
@@ -209,7 +211,6 @@ void testFunc(struct node* Head, struct node* Half, struct node* Last, int data,
     printf("  %d", Last->data);
     printf("  %d Maior", max->data);
     printf("  %d Menor", min->data);
-
 }
 
 
