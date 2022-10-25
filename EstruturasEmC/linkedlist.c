@@ -130,6 +130,7 @@ void removeNode(struct node* head, int index){
 
 }
 
+/*
 struct node getNode(struct node* head, int index){
     struct node* aux = head;
     for(int i = 0; i<index; i++){
@@ -141,8 +142,8 @@ struct node getNode(struct node* head, int index){
 
     return aux;
 }
-
-void start(struct node** head, int data){
+*/
+void start(struct node* head, int data){
     head->data = data;
     head->next = NULL;
 }
