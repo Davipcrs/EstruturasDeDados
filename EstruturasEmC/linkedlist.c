@@ -143,7 +143,7 @@ void removeNode(struct node* head, int index){
 	deleted = NULL;
 }
 
-/*
+
 struct node getNode(struct node* head, int index){
     struct node* aux = head;
     struct node aux2;
