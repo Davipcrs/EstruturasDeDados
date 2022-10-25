@@ -1,5 +1,5 @@
 #include"linkedlist.h"
-
+//comments for commit.
 void printlist(struct node* head){
     struct node* n = head;
     
